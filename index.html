@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robo Market 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+  </script>
+</head>
+<body>
+  <!-- HUD -->
+  <div id="hud" class="hud" hidden>
+    <div id="crosshair" class="crosshair"></div>
+    <div id="prompt" class="prompt" hidden></div>
+    <div id="infoCard" class="info-card" hidden></div>
+
+    <div class="panel stats">
+      <div class="score-row"><span class="star">⭐</span><b id="score">0</b></div>
+      <div id="levelName" class="lvl">Level 1 — Beginner</div>
+      <div class="bar"><div id="levelBar"></div></div>
+      <div id="nextLevel" class="muted small">Next level at 150 ⭐</div>
+      <div class="mini"><span>Served <b id="served">0</b></span><span>Accuracy <b id="accuracy">—</b></span></div>
+      <div id="scoreFloats" class="score-floats"></div>
+    </div>
+
+    <div class="panel orders">
+      <div class="ptitle">🧾 ORDERS</div>
+      <div id="ordersList"></div>
+      <div class="ptitle robot-title">🤖 ROBOT</div>
+      <div id="robotStatus" class="robot-status">Charging at dock</div>
+    </div>
+
+    <div class="keys">
+      <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</span>
+      <span><kbd>Shift</kbd> run</span>
+      <span><kbd>E</kbd> interact</span>
+      <span><kbd>Tab</kbd> tablet</span>
+      <span><kbd>Esc</kbd> pause</span>
+    </div>
+    <div id="subtitle" class="subtitle"></div>
+    <div id="toasts" class="toasts"></div>
+    <div id="banner" class="banner"></div>
+  </div>
+
+  <!-- Tablet app (zoomed view of the 3D tablet) -->
+  <div id="tablet" class="tablet-wrap" hidden>
+    <div class="device">
+      <div class="camera-dot"></div>
+      <div class="screen">
+        <header class="t-head">
+          <span class="t-brand">SmartTab <small>English → O'zbek</small></span>
+          <span id="tabletScore" class="t-score"></span>
+          <span id="tabletClock" class="t-clock"></span>
+          <button class="t-close" data-act="close" aria-label="Close tablet">✕</button>
+        </header>
+        <nav id="tabletTabs" class="t-tabs"></nav>
+        <main id="tabletBody" class="t-body"></main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start menu -->
+  <div id="menu" class="menu">
+    <div class="menu-card">
+      <div class="logo">🤖🛒</div>
+      <h1>Robo Market 3D</h1>
+      <p class="tag">A first-person supermarket simulator — translate English requests into Uzbek and send your robot to deliver.</p>
+      <h2>SELECT YOUR ENGLISH LEVEL</h2>
+      <div id="levelCards" class="lvcards"></div>
+      <button id="playBtn" class="play">▶ START SHIFT</button>
+      <div class="how">
+        <div><b>1.</b> A customer asks for something in English.</div>
+        <div><b>2.</b> Use the tablet on the counter (<kbd>E</kbd>) — pick the products & quantity.</div>
+        <div><b>3.</b> Confirm — the robot fetches them from the shelves and delivers.</div>
+      </div>
+      <p class="muted small">Controls: <kbd>WASD</kbd> move • mouse look • <kbd>E</kbd> interact • <kbd>Tab</kbd> tablet • <kbd>Esc</kbd> pause</p>
+    </div>
+  </div>
+
+  <div id="pause" class="menu" hidden>
+    <div class="menu-card small-card">
+      <h1>Paused</h1>
+      <button id="resumeBtn" class="play">▶ RESUME</button>
+      <button id="pauseTablet" class="ghost-btn">📱 Open tablet</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
